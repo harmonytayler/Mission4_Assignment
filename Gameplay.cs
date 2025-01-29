@@ -31,13 +31,11 @@ namespace Mission4_Assignment
                 {
                     if (board[i, 0] == "O")
                     {
-                        Console.Write("Player 1 is the winner!");
                         gameOver = true;
                         return gameOver;
                     }
                     else
                     {
-                        Console.Write("Player 2 is the winner! >:)");
                         gameOver = true;
                         return gameOver;
                     }
@@ -46,13 +44,11 @@ namespace Mission4_Assignment
                 {
                     if (board[0, i] == "O")
                     {
-                        Console.Write("Player 1 is the winner!");
                         gameOver = true;
                         return gameOver;
                     }
                     else
                     {
-                        Console.Write("Player 2 is the winner! >:)");
                         gameOver = true;
                         return gameOver;
                     }
@@ -63,13 +59,11 @@ namespace Mission4_Assignment
             {
                 if (board[0, 0] == "O")
                 {
-                    Console.Write("Player 1 is the winner! >:)");
                     gameOver = true;
                     return gameOver;
                 }
                 else
                 {
-                    Console.Write("Player 2 is the winner! >:)");
                     gameOver = true;
                     return gameOver;
                 }
@@ -78,33 +72,14 @@ namespace Mission4_Assignment
             {
                 if (board[0, 2] == "O")
                 {
-                    Console.Write("Player 1 is the winner! >:)");
                     gameOver = true;
                     return gameOver;
                 }
                 else
                 {
-                    Console.Write("Player 2 is the winner! >:)");
                     gameOver = true;
                     return gameOver;
                 }
-            }
-
-            for (int i = 0; i < 3; i++)
-            {
-                for (int j = 0; j < 3; j++)
-                {
-                    if (board[i, j] == "O" || board[i, j] == "X")
-                    {
-                        spacesFilled++;
-                    }
-                }
-            }
-
-            if (spacesFilled >= 9)
-            {
-                Console.WriteLine("It's a tie?! :|");
-                gameOver = true;
             }
 
             return gameOver;

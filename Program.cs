@@ -2,12 +2,13 @@
 
 Gameplay gameplay = new Gameplay();
 
-char[,] moves = new char[3, 3];// Create a game board array to store the players' choices.
+string[,] moves = new string[3, 3] { { " ", " ", " " }, { " ", " ", " " }, { " ", " ", " " } };// Create a game board array to store the players' choices.
 string board = "";
 int playerTurn = 1;
 int playerNumber = 1;
 bool played = false;
 bool gameOver = false;
+bool gameWon = false;
 
 
 // Welcome the user to the game.
@@ -30,41 +31,42 @@ do
         playerNumber = 2;
     }
 
+
     do
     {
         Console.WriteLine("Choose a row to play: 1, 2, or 3");
         row = int.Parse(Console.ReadLine());
         Console.WriteLine("Choose a column to play: 1, 2, or 3");
         col = int.Parse(Console.ReadLine());
-        if (string.IsNullOrEmpty(moves[row, col].ToString()))
+        if (moves[row-1,col-1] == " ")
         {
             if (playerNumber == 1)
             {
-                moves[row, col] = 'O';
+                moves[row-1, col-1] = "O";
             }
 
             if (playerNumber == 2)
             {
-                moves[row, col] = 'X';
+                moves[row-1, col-1] = "X";
             }
-            // Print the board by calling the method in the supporting (Gameplay) class.
-            board = gameplay.PrintBoard(moves, playerNumber);
             
             played = true;
         }
         else
         {
             Console.WriteLine("Invalid move, please try again.");
+            played = false;
         }
         
         // Print the board by calling the method in the supporting (Gameplay) class.
-        board = gameplay.PrintBoard(moves, playerNumber);
+        gameplay.PrintBoard(moves);
         
     } while (!played);
 
     // Check for a winner by calling the method in the supporting (Gameplay) class,
-    if (gameplay.CheckForWinner(board))
+    if (gameplay.CheckForWinner(moves))
     {
+        gameWon = true;
         // and notify the players when a win has occurred and which player one the game.
         Console.WriteLine($"Congratulations! Player {playerNumber} has won the game!");
         gameOver = true;
@@ -72,7 +74,7 @@ do
     if ((playerTurn == 9))
     {
         // Bonus Note: should probably also have an option to account for a tie game.
-        Console.WriteLine("Game Over! You tied.");
+        Console.WriteLine("You tied.");
         gameOver = true;
     }
     
