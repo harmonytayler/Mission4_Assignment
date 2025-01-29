@@ -6,6 +6,7 @@ string[,] moves = new string[3, 3] { { " ", " ", " " }, { " ", " ", " " }, { " "
 string board = "";
 int playerTurn = 1;
 int playerNumber = 1;
+bool validInput = false;
 bool played = false;
 bool gameOver = false;
 bool gameWon = false;
@@ -20,12 +21,12 @@ do
     int row;
     int col;
     
-    if (playerTurn % 2 == 1) //If turn # is odd
+    if (playerTurn % 2 == 1) //If turn # is odd, player 1s turn
     {
         Console.WriteLine("Player 1, your turn!");
         playerNumber = 1;
     }
-    if (playerTurn % 2 == 0) //if turn # is even
+    if (playerTurn % 2 == 0) //if turn # is even, player 2s turn
     {
         Console.WriteLine("Player 2, your turn");
         playerNumber = 2;
@@ -34,10 +35,36 @@ do
 
     do
     {
-        Console.WriteLine("Choose a row to play: 1, 2, or 3");
-        row = int.Parse(Console.ReadLine());
-        Console.WriteLine("Choose a column to play: 1, 2, or 3");
-        col = int.Parse(Console.ReadLine());
+        do
+        {
+            Console.WriteLine("Choose a row to play: 1, 2, or 3");
+            row = int.Parse(Console.ReadLine());
+            if (row < 1 || row > 3)
+            {
+                Console.WriteLine("Invalid row number!");
+                validInput = false;
+            }
+            else
+            {
+                validInput = true;
+            }
+        } while (validInput == false);
+
+        do
+        {
+            Console.WriteLine("Choose a column to play: 1, 2, or 3");
+            col = int.Parse(Console.ReadLine());
+            if (col < 1 || col > 3)
+            {
+                Console.WriteLine("Invalid column number!");
+                validInput = false;
+            }
+            else
+            {
+                validInput = true;
+            }
+        }while (validInput == false);
+
         if (moves[row-1,col-1] == " ")
         {
             if (playerNumber == 1)
