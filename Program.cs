@@ -12,4 +12,4 @@ Gameplay gameplay = new Gameplay();
 
 // Check for a winner by calling the method in the supporting (Gameplay) class,
 // and notify the players when a win has occurred and which player one the game.
-    // Bonus Note: should probably also have an option to account for a tie game.
+// Bonus Note: should probably also have an option to account for a tie game.
