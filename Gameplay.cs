@@ -75,11 +75,15 @@ namespace Mission4_Assignment
                     {
                         if board[0, 2] == "O"
                         {
-                            return "Player 1 is the winner! :)";
+                            Console.Write("Player 1 is the winner! >:)");
+                            gameOver = true;
+                            return gameOver;
                         }
                         else
                         {
-                            return "Player 2 is the winner! >:)";
+                            Console.Write("Player 2 is the winner! >:)");
+                            gameOver = true;
+                            return gameOver;
                         }
                     }
                     else if
